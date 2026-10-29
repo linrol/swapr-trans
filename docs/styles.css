@@ -957,3 +957,43 @@ body {
     font-size: 2.2rem;
   }
 }
+
+/* 开发者赛博咖啡馆穿透胶囊 (Cyber Cafe Portal) */
+.cyber-cafe-portal {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(220, 210, 195, 0.85);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #382516;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 16px rgba(56, 37, 22, 0.1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-cafe-portal:hover {
+  background: #ffffff;
+  border-color: #c86835;
+  color: #c86835;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200, 104, 53, 0.18);
+}
+
+@media (max-width: 768px) {
+  .cyber-cafe-portal {
+    bottom: 16px;
+    right: 16px;
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+}

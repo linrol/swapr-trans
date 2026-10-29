@@ -9,6 +9,7 @@
       navFaq: "常见问题",
       navInstall: "安装",
       navSdk: "开发库",
+      navCafe: "咖啡小铺",
       ctaDownload: "下载 DMG",
 
       // Hero
@@ -64,8 +65,10 @@
       installStep4: "若使用 <strong>Apple 原生端侧模型</strong>，系统首次使用会提示下载离线语言包（亦可在 <strong>系统设置 → 通用 → 语言与地区 → 翻译语言</strong> 提前下载），完成后即可完全脱网离线运行。",
       btnDownloadBox: "下载 SwaprTrans-1.0.2.dmg (1.9MB)",
 
-      // Footer
+      // Footer & Portal
       footerText: "SwaprTrans · 专为 macOS 打造的极简原生选词瞬译与原地覆写工具",
+      footerCafe: "Linrol 的赛博咖啡馆",
+      portalText: "来吧台喝杯咖啡",
     },
 
     en: {
@@ -75,6 +78,7 @@
       navInstall: "Download",
       navSdk: "SPM SDK",
       navFaq: "FAQ",
+      navCafe: "Cafe Lounge",
       ctaDownload: "Download DMG",
 
       // Hero
@@ -130,8 +134,10 @@
       installStep4: "If using the <strong>Apple Native On-Device engine</strong>, macOS will prompt you to download the offline language pack on first use (or pre-download in <strong>System Settings → General → Language & Region → Translation Languages</strong>). Once downloaded, it operates 100% offline.",
       btnDownloadBox: "Download SwaprTrans-1.0.2.dmg (1.9MB)",
 
-      // Footer
+      // Footer & Portal
       footerText: "SwaprTrans · The lightweight native in-place translation tool for macOS",
+      footerCafe: "Linrol's Cyber Cafe",
+      portalText: "Visit Cafe Lounge",
     },
   };
 
