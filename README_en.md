@@ -30,7 +30,12 @@ It shatters the traditional friction loop: *"select -> copy -> switch app -> pas
   - **Microsoft Edge**: Ultra-fast keyless direct lane;
   - **Google Translate**: Automated graceful fallback;
 - **Bi-directional Language Auto-Detection**: Seamlessly detects Chinese and foreign languages, converting Chinese to English or foreign text to Chinese;
-- **Non-Activating Liquid Glass HUD**: Floating HUD appears near your cursor without stealing window focus or resetting text selections;
+- **⭐ Built-in Vocabulary & Favorites Manager (Powered by SQLite)**:
+  - **Instant Star on HUD**: Click the star button in translation popup to bookmark phrases and words;
+  - **Dedicated Native Window**: Bidirectional search across source and target text, native TTS pronunciation, and cleanups;
+  - **Export to CSV / JSON**: Export all your saved translations with one click into Anki, dictionary apps, or flashcards;
+  - **Native SQLite3 Persistence**: Uses macOS built-in `libsqlite3` with WAL journaling—zero external dependencies, ultra-fast and resilient;
+- **Non-Activating Liquid Glass HUD**: Floating HUD appears near your cursor without stealing window focus; customizable background opacity (40%~100%) while preserving 100% crisp text contrast;
 - **Ultra-lightweight & Universal 2**: Pure Swift + SwiftUI native architecture, runs natively on both Apple Silicon (M1/M2/M3/M4) and Intel Macs;
 - **Silent In-Place Auto Update**: Checks releases in the background, updates with one click, and preserves macOS Accessibility trust.
 
@@ -38,7 +43,7 @@ It shatters the traditional friction loop: *"select -> copy -> switch app -> pas
 
 ## 📦 Use as a Swift Package (SPM)
 
-`SwaprTrans` is not only a standalone menu bar application—its core engine and UI are fully modularized and open-sourced via `SwaprTransKit`. You can import it into your own macOS apps:
+`SwaprTrans` is not only a standalone menu bar application—its core engine and UI are fully modularized and open-sourced via `SwaprTransKit`. When imported into third-party apps, it defaults to a clean, pure translation tool without baggage:
 
 ```swift
 // Package.swift
@@ -59,10 +64,19 @@ Usage in your app:
 ```swift
 import SwaprTransKit
 
-// Enable engine
+// 1. Enable translation engine (defaults to pure translator with zero favorites UI/DB footprint)
 SwaprTransConfig.shared.isEnabled = true
 
-// Embed prebuilt settings view in SwiftUI
+// 2. Optionally enable Favorites functionality
+SwaprTransConfig.shared.isFavoritesEnabled = true
+
+// 3. Open native favorites window with one line (Optional)
+FavoritesWindowController.shared.show()
+
+// 4. Or embed favorites SwiftUI view into your own views (Optional)
+FavoritesListView()
+
+// 5. Embed prebuilt settings view in SwiftUI
 SwaprTransSettingsView()
 ```
 

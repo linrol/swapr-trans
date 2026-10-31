@@ -44,6 +44,12 @@
       feat4Title: "🪟 焦点无损与开源 SwaprTransKit",
       feat4Desc:
         "纯 Swift 原生打造，常驻内存微量。浮窗绝不夺取焦点；核心 SwaprTransKit 作为 Swift Package 完全开源开放。",
+      feat5Title: "⭐ 随手收藏与独立生词本",
+      feat5Desc:
+        "遇到地道用法或生词随手点星收藏。拥有独立原生管理窗口，支持实时双向模糊检索、朗读与一键导出 CSV / JSON。",
+      feat6Title: "🗄️ 系统原生 SQLite3 存储",
+      feat6Desc:
+        "基于 macOS 内置 libsqlite3 驱动，WAL 事务模式，零额外三方包依赖；透明度 40%~100% 自由调节，文字始终锐利。",
 
       // FAQ
       faqTitle: "常见问题解答 (FAQ)",
@@ -56,6 +62,8 @@
       faqA3: "支持。默认触发快捷键为空格键（Space），同时在设置面板中预设了右键双击、方向键向下、Option + D、Option + T、Option + Space、F1 ~ F6 等多种高效手势与组合键，用户可按个人习惯自由选择。",
       faqQ4: "第三方开发者如何集成 SwaprTrans？",
       faqA4: "SwaprTrans 的核心能力已拆解封装为 SwaprTransKit，作为 Swift Package (SPM) 完全开源。开发者只需在 Package.swift 中引入依赖，即可在自己的 macOS 原生 App 中开箱即用集成划词瞬译与原地覆写能力。",
+      faqQ5: "收藏的生词如何查看、搜索与导出？",
+      faqA5: "在菜单栏下拉面板中点击「Saved Translations」即可唤起独立的生词管理窗口。支持对原文与译文进行实时模糊检索、原声发音朗读，并支持一键导出为标准的 CSV 或 JSON 格式，方便无缝同步至 Anki、欧路词典等外部学习工具。",
 
       // Install
       installTitle: "快速安装与授权",
@@ -113,6 +121,12 @@
       feat4Title: "🪟 Non-Activating HUD & Open SPM",
       feat4Desc:
         "Pure Swift native build with negligible RAM usage. Never steals window focus; core SwaprTransKit open source via Swift Package.",
+      feat5Title: "⭐ Instant Bookmark & Vocabulary Manager",
+      feat5Desc:
+        "Star authentic expressions directly in the HUD. Access them anytime in a native window with full-text search, TTS, and CSV/JSON export.",
+      feat6Title: "🗄️ Native SQLite3 & Frost Density",
+      feat6Desc:
+        "Powered by macOS built-in libsqlite3 with WAL transactions; customize background opacity 40%–100% with always-crisp typography.",
 
       // FAQ
       faqTitle: "Frequently Asked Questions (FAQ)",
@@ -125,6 +139,8 @@
       faqA3: "Yes. Space is the default trigger key. You can also choose from presets including Right Double Click, Down Arrow, Option + D, Option + T, Option + Space, and F1–F6 in the settings panel.",
       faqQ4: "How can developers integrate SwaprTrans in other apps?",
       faqA4: "SwaprTrans core logic is modularized as SwaprTransKit, open sourced via Swift Package Manager. Developers can easily embed in-place translation into their macOS applications.",
+      faqQ5: "How to view, search, and export saved translations?",
+      faqA5: "Click 'Saved Translations' in the menu bar dropdown to summon the standalone manager. It offers instant bidirectional search, audio pronunciation, and one-click export to CSV or JSON for Anki or vocabulary flashcards.",
 
       // Install
       installTitle: "Quick Start & Setup",

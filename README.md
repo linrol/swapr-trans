@@ -30,14 +30,19 @@
   - **Microsoft Edge**：免 Key 专线极速互译通道；
   - **Google Translate**：多链路自动降级兜底；
 - **双向智能语种识别**：中英混合输入自动侦测，中文自动转英文、外文自动转中文；
-- **绝不夺取系统焦点的毛玻璃浮窗**：浮窗浮起时，当前编辑窗口的光标与选区完好如初；
-- **纯原生零负载**：纯 Swift + SwiftUI + AppKit 重构，内存仅微量常驻，体积不足 1MB。
+- **⭐ 随手收藏生词与专属生词本（内置 SQLite 持久化）**：
+  - **浮窗一键收藏**：遇到地道外文表达或生词，点击星标即可快速收藏；
+  - **独立原生管理窗口**：支持原文/译文双向模糊搜索、TTS 原生朗读、单条与批量清理；
+  - **一键导出 CSV / JSON**：随时导出所有收藏内容，无缝同步至 Anki、欧路词典等工具；
+  - **SQLite3 增量事务存储**：基于系统内置 `SQLite3` (WAL 模式)，0 额外第三方依赖，毫秒级读写且高可靠；
+- **绝不夺取系统焦点的毛玻璃浮窗**：浮窗浮起时，当前编辑窗口的光标与选区完好如初；支持 40% ~ 100% 磨砂背景透明度自定义调节，文字始终保持 100% 锐利清晰；
+- **纯原生零负载**：纯 Swift + SwiftUI + AppKit 重构，内存仅微量常驻，体积不足 2MB。
 
 ---
 
 ## 📦 作为 Swift Package (SPM) 库引用
 
-`SwaprTrans` 不仅是一个独立的 macOS 菜单栏应用，它的核心能力以 `SwaprTransKit` 完整对外开放。你可以在其他 macOS 应用程序中直接引入：
+`SwaprTrans` 不仅是一个独立的 macOS 菜单栏应用，它的核心能力以 `SwaprTransKit` 完整对外开放。其他 macOS 应用程序引入时，默认保持最纯粹的极简划词翻译工具，亦可按需激活高级功能：
 
 ```swift
 // Package.swift
@@ -54,14 +59,23 @@ targets: [
 ]
 ```
 
-在你的 App 中直接调用与嵌入：
+在你的 App 中按需调用与嵌入：
 ```swift
 import SwaprTransKit
 
-// 启动服务
+// 1. 启动划词翻译服务（默认保持极简纯净，不展示收藏按钮，零数据库占用）
 SwaprTransConfig.shared.isEnabled = true
 
-// 在 SwiftUI 菜单或设置窗口中直接嵌入开箱即用的设置面板
+// 2. 按需启用收藏与生词本（可选）
+SwaprTransConfig.shared.isFavoritesEnabled = true
+
+// 3. 一行代码呼出收藏管理窗口（可选）
+FavoritesWindowController.shared.show()
+
+// 4. 或直接将生词本视图嵌入宿主自有界面（可选）
+FavoritesListView()
+
+// 5. 在 SwiftUI 菜单或设置窗口中直接嵌入开箱即用的设置面板
 SwaprTransSettingsView()
 ```
 
