@@ -163,3 +163,51 @@ jobs:
           generate_release_notes: true
           draft: false
           prerelease: false
+
+      - name: Update Homebrew Tap
+        if: success()
+        env:
+          TAP_GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+        run: |
+          if [ -z "$TAP_GITHUB_TOKEN" ]; then
+            echo "⚠️ HOMEBREW_TAP_TOKEN is not configured, skipping Homebrew tap update."
+            exit 0
+          fi
+
+          TAG="${{ github.ref_name }}"
+          VERSION="${TAG#v}"
+          DIST_DIR="$GITHUB_WORKSPACE/dist"
+          DMG_FILE=$(ls "$DIST_DIR"/SwaprTrans-*.dmg | head -n 1)
+
+          if [ ! -f "$DMG_FILE" ]; then
+            echo "❌ DMG file not found in $DIST_DIR"
+            exit 1
+          fi
+
+          SHA256=$(shasum -a 256 "$DMG_FILE" | awk '{print $1}')
+          echo "Updating Homebrew Tap for SwaprTrans v${VERSION} (SHA256: ${SHA256})"
+
+          # Clone linrol/homebrew-tap using the personal access token
+          git clone "https://x-access-token:${TAP_GITHUB_TOKEN}@github.com/linrol/homebrew-tap.git" tap_repo
+          cd tap_repo
+
+          CASK_FILE="Casks/swapr-trans.rb"
+          if [ -f "$CASK_FILE" ]; then
+            perl -i -pe "s/version \".*?\"/version \"$VERSION\"/g" "$CASK_FILE"
+            perl -i -pe "s/sha256 \".*?\"/sha256 \"$SHA256\"/g" "$CASK_FILE"
+
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add "$CASK_FILE"
+
+            if git diff --staged --quiet; then
+              echo "No changes in $CASK_FILE, already up to date."
+            else
+              git commit -m "chore(cask): bump swapr-trans to v${VERSION}"
+              git push origin main
+              echo "🎉 Successfully updated linrol/homebrew-tap to v${VERSION}!"
+            fi
+          else
+            echo "❌ $CASK_FILE not found in tap repository!"
+            exit 1
+          fi
