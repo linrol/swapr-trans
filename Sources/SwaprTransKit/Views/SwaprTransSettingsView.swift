@@ -5,7 +5,28 @@ public struct SwaprTransSettingsView: View {
     @ObservedObject public var config: SwaprTransConfig = SwaprTransConfig.shared
     @State private var modelDownloadWarning: String? = nil
 
-    public init() {}
+    public let isCollapsible: Bool
+    private var externalExpanded: Binding<Bool>?
+    @State private var internalExpanded: Bool
+
+    private var isExpanded: Binding<Bool> {
+        if let external = externalExpanded {
+            return external
+        }
+        return $internalExpanded
+    }
+
+    public init(isCollapsible: Bool = false, defaultExpanded: Bool = false) {
+        self.isCollapsible = isCollapsible
+        self.externalExpanded = nil
+        self._internalExpanded = State(initialValue: isCollapsible ? defaultExpanded : true)
+    }
+
+    public init(isCollapsible: Bool, isExpanded: Binding<Bool>) {
+        self.isCollapsible = isCollapsible
+        self.externalExpanded = isExpanded
+        self._internalExpanded = State(initialValue: isExpanded.wrappedValue)
+    }
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 7) {
@@ -28,10 +49,24 @@ public struct SwaprTransSettingsView: View {
                 .toggleStyle(SwitchToggleStyle(tint: .accentColor))
                 .labelsHidden()
                 .controlSize(.mini)
+
+                if isCollapsible {
+                    Button(action: {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            isExpanded.wrappedValue.toggle()
+                        }
+                    }) {
+                        Image(systemName: isExpanded.wrappedValue ? "chevron.up" : "chevron.down")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundColor(.secondary)
+                    }
+                    .buttonStyle(.plain)
+                }
             }
 
-            // Setting items always visible regardless of toggle state
-            VStack(spacing: 5) {
+            if !isCollapsible || isExpanded.wrappedValue {
+                // Setting items always visible regardless of toggle state
+                VStack(spacing: 5) {
                 // Shortcut selection
                 HStack {
                     Text("Shortcut:")
@@ -195,6 +230,7 @@ public struct SwaprTransSettingsView: View {
                 .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.top, 1)
+            }
         }
         .padding(10)
         .background(
