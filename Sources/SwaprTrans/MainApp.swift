@@ -9,6 +9,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         ProcessInfo.processInfo.disableAutomaticTermination("SwaprTrans MenuBar Daemon")
         ProcessInfo.processInfo.disableSuddenTermination()
 
+        // Enable favorites by default for standalone SwaprTrans menu bar app
+        if UserDefaults.standard.object(forKey: "swapr_trans_favorites_enabled") == nil {
+            SwaprTransConfig.shared.isFavoritesEnabled = true
+        }
+
         UpdateManager.shared.startBackgroundCheck()
     }
 }

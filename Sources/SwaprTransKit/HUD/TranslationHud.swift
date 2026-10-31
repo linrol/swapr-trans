@@ -220,7 +220,7 @@ public final class TranslationHudController: NSObject {
 
         hv.layoutSubtreeIfNeeded()
         let fittingSize = hv.fittingSize
-        let targetWidth = max(285, fittingSize.width > 0 ? fittingSize.width : 360)
+        let targetWidth = max(330, fittingSize.width > 0 ? fittingSize.width : 360)
         let targetHeight = max(110, min(500, fittingSize.height > 0 ? fittingSize.height : 160))
 
         p.setContentSize(NSSize(width: targetWidth, height: targetHeight))
@@ -276,7 +276,7 @@ public final class TranslationHudController: NSObject {
 
         hv.layoutSubtreeIfNeeded()
         let fittingSize = hv.fittingSize
-        let targetWidth = max(285, fittingSize.width > 0 ? fittingSize.width : 360)
+        let targetWidth = max(330, fittingSize.width > 0 ? fittingSize.width : 360)
         let targetHeight = max(110, min(500, fittingSize.height > 0 ? fittingSize.height : 200))
 
         var frame = p.frame
@@ -449,6 +449,7 @@ public struct VisualEffectView: NSViewRepresentable {
 
 public struct TranslationHudView: View {
     @ObservedObject var config = SwaprTransConfig.shared
+    @ObservedObject var favoritesManager = FavoritesManager.shared
     @ObservedObject var model: TranslationHudModel
     let onToggleDirection: () -> Void
     let onReplace: () -> Void
@@ -459,6 +460,10 @@ public struct TranslationHudView: View {
 
     @State private var isCopied: Bool = false
     @State private var isHoveringDirection: Bool = false
+
+    private var isFavorited: Bool {
+        favoritesManager.isFavorited(original: model.original)
+    }
 
     private var cardWidth: CGFloat {
         let font = NSFont.systemFont(ofSize: 13, weight: .medium)
@@ -483,7 +488,7 @@ public struct TranslationHudView: View {
         }
         
         let neededWidth = ceil(maxLineWidth) + 42
-        return max(285, min(450, neededWidth))
+        return max(330, min(480, neededWidth))
     }
 
     private var isLongText: Bool {
@@ -559,6 +564,8 @@ public struct TranslationHudView: View {
                             .foregroundColor(.accentColor)
                         Text(model.direction)
                             .font(.system(size: 11, weight: .bold))
+                            .lineLimit(1)
+                            .fixedSize()
                         Image(systemName: "arrow.left.arrow.right")
                             .font(.system(size: 9, weight: .semibold))
                             .foregroundColor(isHoveringDirection ? .accentColor : .secondary.opacity(0.8))
@@ -572,6 +579,7 @@ public struct TranslationHudView: View {
                     .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
+                .fixedSize()
                 .onHover { hovering in
                     isHoveringDirection = hovering
                 }
@@ -580,6 +588,24 @@ public struct TranslationHudView: View {
                 Spacer()
 
                 if !model.isLoading && !model.translated.isEmpty {
+                    if config.isFavoritesEnabled {
+                        // Favorite / Bookmark Button
+                        Button(action: {
+                            favoritesManager.toggleFavorite(
+                                original: model.original,
+                                translated: model.translated,
+                                direction: model.direction,
+                                provider: model.provider
+                            )
+                        }) {
+                            Image(systemName: isFavorited ? "star.fill" : "star")
+                                .font(.system(size: 11))
+                                .foregroundColor(isFavorited ? .yellow : .secondary)
+                        }
+                        .buttonStyle(.plain)
+                        .help(isFavorited ? "Remove from Favorites" : "Add to Favorites")
+                    }
+
                     // Pronounce TTS Button
                     Button(action: onSpeak) {
                         Image(systemName: "speaker.wave.2")
@@ -592,6 +618,8 @@ public struct TranslationHudView: View {
 
                 Text(model.provider)
                     .font(.system(size: 9))
+                    .lineLimit(1)
+                    .fixedSize()
                     .foregroundColor(.secondary)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
@@ -655,7 +683,7 @@ public struct TranslationHudView: View {
         .background(
             ZStack {
                 VisualEffectView(material: .popover, blendingMode: .behindWindow, cornerRadius: 14)
-                Color(nsColor: .windowBackgroundColor).opacity(0.3)
+                Color(nsColor: .windowBackgroundColor).opacity(0.65)
             }
         )
         .clipShape(RoundedRectangle(cornerRadius: 14))

@@ -210,7 +210,7 @@ public struct SwaprTransSettingsView: View {
 
                     Slider(
                         value: $config.hudOpacity,
-                        in: 0.3...1.0,
+                        in: 0.4...1.0,
                         step: 0.05
                     )
                     .frame(width: 80)

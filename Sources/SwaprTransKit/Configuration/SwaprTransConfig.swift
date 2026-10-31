@@ -20,6 +20,7 @@ public final class SwaprTransConfig: ObservableObject {
     private let keyShortcut = "swapr_trans_shortcut"
     private let keyDismissSeconds = "swapr_trans_dismiss_seconds"
     private let keyHudOpacity = "swapr_trans_hud_opacity"
+    private let keyFavoritesEnabled = "swapr_trans_favorites_enabled"
 
     private var isInitialized = false
 
@@ -59,11 +60,18 @@ public final class SwaprTransConfig: ObservableObject {
         }
     }
 
-    @Published public var hudOpacity: Double = 0.85 {
+    @Published public var hudOpacity: Double = 0.95 {
         didSet {
             guard isInitialized else { return }
             defaults.set(hudOpacity, forKey: keyHudOpacity)
             TranslationHudController.shared.updateOpacity(hudOpacity)
+        }
+    }
+
+    @Published public var isFavoritesEnabled: Bool = false {
+        didSet {
+            guard isInitialized else { return }
+            defaults.set(isFavoritesEnabled, forKey: keyFavoritesEnabled)
         }
     }
 
@@ -102,8 +110,18 @@ public final class SwaprTransConfig: ObservableObject {
             defaults.set(0, forKey: keyDismissSeconds)
         }
 
-        let savedOpacity = defaults.double(forKey: keyHudOpacity)
-        self.hudOpacity = defaults.object(forKey: keyHudOpacity) != nil ? savedOpacity : 0.85
+        if defaults.object(forKey: keyHudOpacity) != nil {
+            let savedOpacity = defaults.double(forKey: keyHudOpacity)
+            self.hudOpacity = min(1.0, max(0.3, savedOpacity))
+        } else {
+            self.hudOpacity = 0.95
+        }
+
+        if defaults.object(forKey: keyFavoritesEnabled) != nil {
+            self.isFavoritesEnabled = defaults.bool(forKey: keyFavoritesEnabled)
+        } else {
+            self.isFavoritesEnabled = false
+        }
 
         checkPermission()
         self.isInitialized = true

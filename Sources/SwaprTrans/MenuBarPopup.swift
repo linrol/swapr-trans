@@ -5,6 +5,7 @@ import SwaprTransKit
 struct StandaloneMenuBarPopup: View {
     @ObservedObject var config = SwaprTransConfig.shared
     @ObservedObject var updateManager = UpdateManager.shared
+    @ObservedObject var favoritesManager = FavoritesManager.shared
     @State private var isVersionCopied: Bool = false
 
     var body: some View {
@@ -66,6 +67,44 @@ struct StandaloneMenuBarPopup: View {
 
             // Core Translation Settings Card
             SwaprTransSettingsView()
+
+            // Saved Translations Entry Row
+            if config.isFavoritesEnabled {
+                Button(action: {
+                    FavoritesWindowController.shared.show()
+                }) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "star.fill")
+                            .font(.system(size: 12))
+                            .foregroundColor(.yellow)
+
+                        Text("Saved Translations")
+                            .font(.system(size: 11, weight: .medium))
+                            .foregroundColor(.primary)
+
+                        Spacer()
+
+                        Text("\(favoritesManager.items.count)")
+                            .font(.system(size: 10, weight: .semibold))
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.secondary.opacity(0.12))
+                            .clipShape(Capsule())
+
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 10, weight: .semibold))
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 7)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.secondary.opacity(0.08))
+                    )
+                }
+                .buttonStyle(.plain)
+            }
 
             Divider()
                 .opacity(0.5)
