@@ -338,7 +338,40 @@
   const demoWindowTitle = document.getElementById("demo-window-title");
   const demoPills = document.querySelectorAll(".demo-pill");
 
-  let currentLang = localStorage.getItem("st-lang") || "zh";
+  function detectInitialLanguage() {
+    // 1. Explicit URL parameter (e.g. ?lang=en or ?lang=zh)
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get("lang");
+      if (urlLang && urlLang in strings) {
+        return urlLang;
+      }
+    } catch (_) {}
+
+    // 2. User's previous explicit manual choice
+    const saved = localStorage.getItem("st-lang");
+    if (saved && saved in strings) {
+      return saved;
+    }
+
+    // 3. Browser / OS system language auto-detection
+    const navLangs = navigator.languages || [navigator.language || navigator.userLanguage || ""];
+    for (const l of navLangs) {
+      if (!l) continue;
+      const lower = l.toLowerCase();
+      if (lower.startsWith("zh")) {
+        return "zh";
+      }
+      if (lower.startsWith("en")) {
+        return "en";
+      }
+    }
+
+    // 4. Default to English for international visitors
+    return "en";
+  }
+
+  let currentLang = detectInitialLanguage();
   let activeScenarioIndex = 0;
   let demoTimer = 0;
   let demoToken = 0;
