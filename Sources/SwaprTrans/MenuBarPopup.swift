@@ -23,12 +23,46 @@ struct StandaloneMenuBarPopup: View {
 
                 Spacer()
 
-                Circle()
-                    .fill(config.isEnabled && config.hasAccessibilityPermission ? Color.green : Color.secondary.opacity(0.5))
-                    .frame(width: 8, height: 8)
-                Text(config.isEnabled && config.hasAccessibilityPermission ? "Active" : "Idle")
-                    .font(.system(size: 11))
-                    .foregroundColor(.secondary)
+                // Pro Badge / Upgrade Pill (Replaces Idle/Active indicator)
+                Button(action: {
+                    LicenseWindowController.shared.show()
+                }) {
+                    if licenseManager.isPro {
+                        HStack(spacing: 3) {
+                            Image(systemName: "crown.fill")
+                                .font(.system(size: 10))
+                                .foregroundColor(.yellow)
+                            Text("PRO")
+                                .font(.system(size: 10, weight: .heavy))
+                                .foregroundColor(.yellow)
+                        }
+                        .padding(.horizontal, 7)
+                        .padding(.vertical, 3)
+                        .background(Color.yellow.opacity(0.18))
+                        .clipShape(Capsule())
+                    } else {
+                        HStack(spacing: 4) {
+                            Image(systemName: "sparkles")
+                                .font(.system(size: 9, weight: .semibold))
+                            Text("PRO $6.99")
+                                .font(.system(size: 10, weight: .bold))
+                        }
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 3.5)
+                        .background(
+                            LinearGradient(
+                                colors: [Color.purple, Color.blue],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .clipShape(Capsule())
+                        .shadow(color: Color.purple.opacity(0.35), radius: 3, y: 1)
+                    }
+                }
+                .buttonStyle(.plain)
+                .help(licenseManager.isPro ? "SwaprTrans Pro Lifetime Activated" : "Upgrade to SwaprTrans Pro ($6.99)")
             }
 
             // Update Banner (shows when update available, downloading, or feedback after manual check)
@@ -106,58 +140,6 @@ struct StandaloneMenuBarPopup: View {
                 }
                 .buttonStyle(.plain)
             }
-
-            // Pro License Status / Upgrade Row
-            Button(action: {
-                LicenseWindowController.shared.show()
-            }) {
-                HStack(spacing: 8) {
-                    Image(systemName: licenseManager.isPro ? "crown.fill" : "sparkles")
-                        .font(.system(size: 12))
-                        .foregroundColor(licenseManager.isPro ? .yellow : .purple)
-
-                    Text(licenseManager.isPro ? "SwaprTrans Pro" : "Upgrade to Pro")
-                        .font(.system(size: 11, weight: .medium))
-                        .foregroundColor(.primary)
-
-                    Spacer()
-
-                    if licenseManager.isPro {
-                        Text("Active")
-                            .font(.system(size: 9, weight: .bold))
-                            .foregroundColor(.green)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
-                            .background(Color.green.opacity(0.12))
-                            .clipShape(Capsule())
-                    } else {
-                        Text("$6.99")
-                            .font(.system(size: 10, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
-                            .background(
-                                LinearGradient(
-                                    colors: [Color.purple, Color.blue],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .clipShape(Capsule())
-                    }
-
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 10, weight: .semibold))
-                        .foregroundColor(.secondary)
-                }
-                .padding(.horizontal, 10)
-                .padding(.vertical, 7)
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(licenseManager.isPro ? Color.secondary.opacity(0.08) : Color.purple.opacity(0.08))
-                )
-            }
-            .buttonStyle(.plain)
 
             Divider()
                 .opacity(0.5)

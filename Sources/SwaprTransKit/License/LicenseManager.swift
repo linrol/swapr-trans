@@ -144,8 +144,10 @@ public final class LicenseManager: ObservableObject {
 
         if statusCode == 200 || statusCode == 201 {
             // 激活成功
-            let instanceId = json["instance_id"] as? String ?? json["id"] as? String
-            let customerEmail = json["customer_email"] as? String ?? (json["customer"] as? [String: Any])?["email"] as? String
+            let instanceObj = json["instance"] as? [String: Any]
+            let instanceId = (instanceObj?["id"] as? String) ?? (json["instance_id"] as? String) ?? (json["id"] as? String)
+            let customerObj = json["customer"] as? [String: Any]
+            let customerEmail = (json["customer_email"] as? String) ?? (customerObj?["email"] as? String)
 
             let info = LicenseInfo(
                 key: key,
