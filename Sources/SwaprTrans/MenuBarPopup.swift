@@ -148,7 +148,7 @@ struct StandaloneMenuBarPopup: View {
             bottomActions
         }
         .padding(14)
-        .frame(width: 330)
+        .frame(width: 340)
         .onAppear {
             config.checkPermission()
         }
@@ -191,7 +191,7 @@ struct StandaloneMenuBarPopup: View {
                     Button(action: {
                         updateManager.downloadAndInstallUpdate()
                     }) {
-                        Text("Update")
+                        Text("Update & Restart")
                             .font(.system(size: 10, weight: .semibold))
                     }
                     .buttonStyle(.borderedProminent)
