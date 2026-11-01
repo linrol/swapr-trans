@@ -18,6 +18,8 @@ It shatters the traditional friction loop: *"select -> copy -> switch app -> pas
 > **🚀 Select & Space to translate, Enter to in-place rewrite!**  
 > In any active input box (Teams, Slack, WeChat, email client, browser, or terminal), select any text and hit the default shortcut **`Space`** to summon the instant translation HUD. Tap **`Enter`** once, and your original draft is atomically transformed into fluent, idiomatic target text!
 
+👉 **[Purchase SwaprTrans Pro Lifetime License ($6.99)](https://www.creem.io/payment/prod_4DbzRAS3zGQqIxCufT244M)** · One-time purchase, lifetime free updates!
+
 ---
 
 ## ✨ Key Features

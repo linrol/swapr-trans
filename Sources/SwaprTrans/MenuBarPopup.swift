@@ -6,6 +6,7 @@ struct StandaloneMenuBarPopup: View {
     @ObservedObject var config = SwaprTransConfig.shared
     @ObservedObject var updateManager = UpdateManager.shared
     @ObservedObject var favoritesManager = FavoritesManager.shared
+    @ObservedObject var licenseManager = LicenseManager.shared
     @State private var isVersionCopied: Bool = false
 
     var body: some View {
@@ -105,6 +106,58 @@ struct StandaloneMenuBarPopup: View {
                 }
                 .buttonStyle(.plain)
             }
+
+            // Pro License Status / Upgrade Row
+            Button(action: {
+                LicenseWindowController.shared.show()
+            }) {
+                HStack(spacing: 8) {
+                    Image(systemName: licenseManager.isPro ? "crown.fill" : "sparkles")
+                        .font(.system(size: 12))
+                        .foregroundColor(licenseManager.isPro ? .yellow : .purple)
+
+                    Text(licenseManager.isPro ? "SwaprTrans Pro" : "Upgrade to Pro")
+                        .font(.system(size: 11, weight: .medium))
+                        .foregroundColor(.primary)
+
+                    Spacer()
+
+                    if licenseManager.isPro {
+                        Text("Active")
+                            .font(.system(size: 9, weight: .bold))
+                            .foregroundColor(.green)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.green.opacity(0.12))
+                            .clipShape(Capsule())
+                    } else {
+                        Text("$6.99")
+                            .font(.system(size: 10, weight: .bold))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(
+                                LinearGradient(
+                                    colors: [Color.purple, Color.blue],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .clipShape(Capsule())
+                    }
+
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundColor(.secondary)
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 7)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(licenseManager.isPro ? Color.secondary.opacity(0.08) : Color.purple.opacity(0.08))
+                )
+            }
+            .buttonStyle(.plain)
 
             Divider()
                 .opacity(0.5)

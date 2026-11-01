@@ -10,6 +10,7 @@
       navInstall: "安装",
       navSdk: "开发库",
       navCafe: "咖啡小铺",
+      ctaPro: "⭐️ Pro 终身版 ($6.99)",
       ctaDownload: "下载 DMG",
 
       // Hero
@@ -87,6 +88,7 @@
       navSdk: "SPM SDK",
       navFaq: "FAQ",
       navCafe: "Cafe Lounge",
+      ctaPro: "⭐️ Get Pro ($6.99)",
       ctaDownload: "Download DMG",
 
       // Hero

@@ -14,6 +14,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             SwaprTransConfig.shared.isFavoritesEnabled = true
         }
 
+        // Silent background validation for Pro license
+        Task {
+            await LicenseManager.shared.validateInBackground()
+        }
+
         UpdateManager.shared.startBackgroundCheck()
     }
 }

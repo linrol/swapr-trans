@@ -3,6 +3,7 @@ import AppKit
 
 public struct FavoritesListView: View {
     @ObservedObject public var favoritesManager: FavoritesManager = FavoritesManager.shared
+    @ObservedObject public var licenseManager: LicenseManager = LicenseManager.shared
     @State private var searchText: String = ""
     @State private var showClearConfirmation: Bool = false
     @State private var copiedItemId: UUID? = nil
@@ -90,6 +91,29 @@ public struct FavoritesListView: View {
             }
 
             Spacer()
+
+            // Pro Badge / Upgrade Button
+            Button(action: {
+                LicenseWindowController.shared.show()
+            }) {
+                HStack(spacing: 4) {
+                    Image(systemName: licenseManager.isPro ? "crown.fill" : "sparkles")
+                        .font(.system(size: 10))
+                    Text(licenseManager.isPro ? "PRO" : "Upgrade Pro")
+                        .font(.system(size: 10, weight: .bold))
+                }
+                .foregroundColor(licenseManager.isPro ? .yellow : .white)
+                .padding(.horizontal, 7)
+                .padding(.vertical, 3)
+                .background(
+                    licenseManager.isPro
+                        ? Color.yellow.opacity(0.18)
+                        : Color.purple.opacity(0.85)
+                )
+                .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
+            .help(licenseManager.isPro ? "SwaprTrans Pro Activated" : "Upgrade to Pro for full features")
 
             Text("\(favoritesManager.items.count) items")
                 .font(.system(size: 11))
@@ -255,27 +279,43 @@ public struct FavoritesListView: View {
 
     private var footerBar: some View {
         HStack {
-            Menu {
-                Button("Export as CSV (.csv)") {
-                    saveFile(content: favoritesManager.exportCSV(), defaultFilename: "swapr_favorites.csv")
+            if licenseManager.isPro {
+                Menu {
+                    Button("Export as CSV (.csv)") {
+                        saveFile(content: favoritesManager.exportCSV(), defaultFilename: "swapr_favorites.csv")
+                    }
+                    Button("Export as JSON (.json)") {
+                        saveFile(content: favoritesManager.exportJSON(), defaultFilename: "swapr_favorites.json")
+                    }
+                    Divider()
+                    Button("Copy All as CSV") {
+                        copyToPasteboard(text: favoritesManager.exportCSV())
+                    }
+                } label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "square.and.arrow.up")
+                        Text("Export")
+                    }
+                    .font(.system(size: 11))
                 }
-                Button("Export as JSON (.json)") {
-                    saveFile(content: favoritesManager.exportJSON(), defaultFilename: "swapr_favorites.json")
+                .menuStyle(.borderlessButton)
+                .fixedSize()
+                .disabled(favoritesManager.items.isEmpty)
+            } else {
+                Button(action: {
+                    LicenseWindowController.shared.show()
+                }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "lock.fill")
+                            .font(.system(size: 10))
+                        Text("Export (Pro)")
+                    }
+                    .font(.system(size: 11))
+                    .foregroundColor(.secondary)
                 }
-                Divider()
-                Button("Copy All as CSV") {
-                    copyToPasteboard(text: favoritesManager.exportCSV())
-                }
-            } label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "square.and.arrow.up")
-                    Text("Export")
-                }
-                .font(.system(size: 11))
+                .buttonStyle(.plain)
+                .help("Upgrade to SwaprTrans Pro to export data")
             }
-            .menuStyle(.borderlessButton)
-            .fixedSize()
-            .disabled(favoritesManager.items.isEmpty)
 
             Spacer()
 
