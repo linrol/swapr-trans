@@ -61,8 +61,7 @@ public final class LicenseManager: ObservableObject {
     public static let productId = "prod_4DbzRAS3zGQqIxCufT244M"
     
     /// Cloudflare Worker 代理服务地址（保护商户 API Key 绝不上端）
-    /// 格式类似: https://swaprtrans-license.<your-subdomain>.workers.dev
-    public static var proxyBaseURL: String = "https://swaprtrans-license.workers.dev"
+    public static var proxyBaseURL: String = "https://mac-license.linrol.workers.dev"
     private static let storageKey = "swapr_trans_license_info"
 
     @Published public private(set) var isPro: Bool = false

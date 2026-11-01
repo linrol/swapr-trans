@@ -25,10 +25,11 @@
 [Creem 官方 API (https://api.creem.io/v1/licenses/...)]
 ```
 
-### 2.1 客户端调用接口
-- `POST <worker-domain>/activate`
-- `POST <worker-domain>/deactivate`
-- `POST <worker-domain>/validate`
+### 2.2 客户端调用接口
+- 线上代理域名: `https://mac-license.linrol.workers.dev`
+- `POST https://mac-license.linrol.workers.dev/activate`
+- `POST https://mac-license.linrol.workers.dev/deactivate`
+- `POST https://mac-license.linrol.workers.dev/validate`
 
 客户端仅需向代理发送用户输入的激活码和机器识别名，无需携带商户 Secret Key。
 
