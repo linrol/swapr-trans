@@ -44,7 +44,7 @@ struct StandaloneMenuBarPopup: View {
                         HStack(spacing: 4) {
                             Image(systemName: "sparkles")
                                 .font(.system(size: 9, weight: .semibold))
-                            Text("PRO $6.99")
+                            Text("Upgrade to Pro")
                                 .font(.system(size: 10, weight: .bold))
                         }
                         .foregroundColor(.white)

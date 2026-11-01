@@ -99,7 +99,7 @@ public struct FavoritesListView: View {
                 HStack(spacing: 4) {
                     Image(systemName: licenseManager.isPro ? "crown.fill" : "sparkles")
                         .font(.system(size: 10))
-                    Text(licenseManager.isPro ? "PRO" : "Upgrade Pro")
+                    Text(licenseManager.isPro ? "PRO" : "Upgrade to Pro")
                         .font(.system(size: 10, weight: .bold))
                 }
                 .foregroundColor(licenseManager.isPro ? .yellow : .white)
