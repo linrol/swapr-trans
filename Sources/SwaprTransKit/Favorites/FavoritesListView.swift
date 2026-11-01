@@ -4,6 +4,7 @@ import AppKit
 public struct FavoritesListView: View {
     @ObservedObject public var favoritesManager: FavoritesManager = FavoritesManager.shared
     @ObservedObject public var licenseManager: CreemLicenseManager = CreemLicenseManager.shared
+    @ObservedObject public var config: SwaprTransConfig = SwaprTransConfig.shared
     @State private var searchText: String = ""
     @State private var showClearConfirmation: Bool = false
     @State private var copiedItemId: UUID? = nil
@@ -92,8 +93,10 @@ public struct FavoritesListView: View {
 
             Spacer()
 
-            // Pro Badge / Upgrade Button
-            CreemUpgradePill()
+            // Pro Badge / Upgrade Button (Only shown if Pro Feature is enabled)
+            if config.isProFeatureEnabled {
+                CreemUpgradePill()
+            }
 
             Text("\(favoritesManager.items.count) items")
                 .font(.system(size: 11))
@@ -259,7 +262,7 @@ public struct FavoritesListView: View {
 
     private var footerBar: some View {
         HStack {
-            if licenseManager.isPro {
+            if config.isProActive {
                 Menu {
                     Button("Export as CSV (.csv)") {
                         saveFile(content: favoritesManager.exportCSV(), defaultFilename: "swapr_favorites.csv")

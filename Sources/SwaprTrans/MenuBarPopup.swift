@@ -23,8 +23,10 @@ struct StandaloneMenuBarPopup: View {
 
                 Spacer()
 
-                // Pro Badge / Upgrade Pill
-                CreemUpgradePill()
+                // Pro Badge / Upgrade Pill (Only shown if Pro Feature is enabled)
+                if config.isProFeatureEnabled {
+                    CreemUpgradePill()
+                }
             }
 
             // Update Banner (shows when update available, downloading, or feedback after manual check)
@@ -65,10 +67,10 @@ struct StandaloneMenuBarPopup: View {
             // Core Translation Settings Card
             SwaprTransSettingsView()
 
-            // Saved Translations Entry Row (Pro Feature)
+            // Saved Translations Entry Row
             if config.isFavoritesEnabled {
                 Button(action: {
-                    if licenseManager.isPro {
+                    if config.isProActive {
                         FavoritesWindowController.shared.show()
                     } else {
                         CreemActivationWindow.show()
@@ -77,7 +79,7 @@ struct StandaloneMenuBarPopup: View {
                     HStack(spacing: 8) {
                         Image(systemName: "star.fill")
                             .font(.system(size: 12))
-                            .foregroundColor(licenseManager.isPro ? .yellow : .secondary)
+                            .foregroundColor(config.isProActive ? .yellow : .secondary)
 
                         Text("Saved Translations")
                             .font(.system(size: 11, weight: .medium))
@@ -85,7 +87,7 @@ struct StandaloneMenuBarPopup: View {
 
                         Spacer()
 
-                        if licenseManager.isPro {
+                        if config.isProActive {
                             Text("\(favoritesManager.items.count)")
                                 .font(.system(size: 10, weight: .semibold))
                                 .foregroundColor(.secondary)
@@ -119,7 +121,7 @@ struct StandaloneMenuBarPopup: View {
                     )
                 }
                 .buttonStyle(.plain)
-                .help(licenseManager.isPro ? "View saved translations" : "Saved Translations is a SwaprTrans Pro feature")
+                .help(config.isProActive ? "View saved translations" : "Saved Translations is a SwaprTrans Pro feature")
             }
 
             Divider()

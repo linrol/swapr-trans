@@ -21,6 +21,7 @@ public final class SwaprTransConfig: ObservableObject {
     private let keyDismissSeconds = "swapr_trans_dismiss_seconds"
     private let keyHudOpacity = "swapr_trans_hud_opacity"
     private let keyFavoritesEnabled = "swapr_trans_favorites_enabled"
+    private let keyProFeatureEnabled = "swapr_trans_pro_enabled"
 
     private var isInitialized = false
 
@@ -75,6 +76,20 @@ public final class SwaprTransConfig: ObservableObject {
         }
     }
 
+    /// 全局控制是否启用 Pro 商业化体系。若为 false，则为纯净开源模式，所有功能对全员免费开放，不显示任何付费引导。
+    @Published public var isProFeatureEnabled: Bool = false {
+        didSet {
+            guard isInitialized else { return }
+            defaults.set(isProFeatureEnabled, forKey: keyProFeatureEnabled)
+        }
+    }
+
+    /// 当前是否享有 Pro 权益：如果未开启商业化体系，则默认全员享有 Pro；若开启，则校验激活状态。
+    public var isProActive: Bool {
+        guard isProFeatureEnabled else { return true }
+        return CreemLicenseManager.shared.isPro
+    }
+
     @Published public var hasAccessibilityPermission: Bool = false
 
     /// Bundle identifiers of apps where shortcut should NOT trigger
@@ -121,6 +136,12 @@ public final class SwaprTransConfig: ObservableObject {
             self.isFavoritesEnabled = defaults.bool(forKey: keyFavoritesEnabled)
         } else {
             self.isFavoritesEnabled = false
+        }
+
+        if defaults.object(forKey: keyProFeatureEnabled) != nil {
+            self.isProFeatureEnabled = defaults.bool(forKey: keyProFeatureEnabled)
+        } else {
+            self.isProFeatureEnabled = false
         }
 
         checkPermission()

@@ -14,6 +14,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             SwaprTransConfig.shared.isFavoritesEnabled = true
         }
 
+        // Enable Pro feature system by default for standalone SwaprTrans menu bar app
+        if UserDefaults.standard.object(forKey: "swapr_trans_pro_enabled") == nil {
+            SwaprTransConfig.shared.isProFeatureEnabled = true
+        }
+
         // Configure Creem Pro License SDK
         CreemLicenseManager.shared.configure(
             CreemLicenseConfig(
