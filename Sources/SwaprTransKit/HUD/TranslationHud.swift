@@ -589,21 +589,25 @@ public struct TranslationHudView: View {
 
                 if !model.isLoading && !model.translated.isEmpty {
                     if config.isFavoritesEnabled {
-                        // Favorite / Bookmark Button
+                        // Favorite / Bookmark Button (Pro Feature)
                         Button(action: {
-                            favoritesManager.toggleFavorite(
-                                original: model.original,
-                                translated: model.translated,
-                                direction: model.direction,
-                                provider: model.provider
-                            )
+                            if LicenseManager.shared.isPro {
+                                favoritesManager.toggleFavorite(
+                                    original: model.original,
+                                    translated: model.translated,
+                                    direction: model.direction,
+                                    provider: model.provider
+                                )
+                            } else {
+                                LicenseWindowController.shared.show()
+                            }
                         }) {
                             Image(systemName: isFavorited ? "star.fill" : "star")
                                 .font(.system(size: 11))
                                 .foregroundColor(isFavorited ? .yellow : .secondary)
                         }
                         .buttonStyle(.plain)
-                        .help(isFavorited ? "Remove from Favorites" : "Add to Favorites")
+                        .help(LicenseManager.shared.isPro ? (isFavorited ? "Remove from Favorites" : "Add to Favorites") : "Upgrade to Pro to save favorites")
                     }
 
                     // Pronounce TTS Button

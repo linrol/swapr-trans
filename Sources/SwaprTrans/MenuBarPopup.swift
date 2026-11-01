@@ -103,15 +103,19 @@ struct StandaloneMenuBarPopup: View {
             // Core Translation Settings Card
             SwaprTransSettingsView()
 
-            // Saved Translations Entry Row
+            // Saved Translations Entry Row (Pro Feature)
             if config.isFavoritesEnabled {
                 Button(action: {
-                    FavoritesWindowController.shared.show()
+                    if licenseManager.isPro {
+                        FavoritesWindowController.shared.show()
+                    } else {
+                        LicenseWindowController.shared.show()
+                    }
                 }) {
                     HStack(spacing: 8) {
                         Image(systemName: "star.fill")
                             .font(.system(size: 12))
-                            .foregroundColor(.yellow)
+                            .foregroundColor(licenseManager.isPro ? .yellow : .secondary)
 
                         Text("Saved Translations")
                             .font(.system(size: 11, weight: .medium))
@@ -119,13 +123,27 @@ struct StandaloneMenuBarPopup: View {
 
                         Spacer()
 
-                        Text("\(favoritesManager.items.count)")
-                            .font(.system(size: 10, weight: .semibold))
-                            .foregroundColor(.secondary)
+                        if licenseManager.isPro {
+                            Text("\(favoritesManager.items.count)")
+                                .font(.system(size: 10, weight: .semibold))
+                                .foregroundColor(.secondary)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(Color.secondary.opacity(0.12))
+                                .clipShape(Capsule())
+                        } else {
+                            HStack(spacing: 2) {
+                                Image(systemName: "lock.fill")
+                                    .font(.system(size: 8))
+                                Text("PRO")
+                                    .font(.system(size: 9, weight: .heavy))
+                            }
+                            .foregroundColor(.purple)
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
-                            .background(Color.secondary.opacity(0.12))
+                            .background(Color.purple.opacity(0.12))
                             .clipShape(Capsule())
+                        }
 
                         Image(systemName: "chevron.right")
                             .font(.system(size: 10, weight: .semibold))
@@ -139,6 +157,7 @@ struct StandaloneMenuBarPopup: View {
                     )
                 }
                 .buttonStyle(.plain)
+                .help(licenseManager.isPro ? "View saved translations" : "Saved Translations is a SwaprTrans Pro feature")
             }
 
             Divider()
