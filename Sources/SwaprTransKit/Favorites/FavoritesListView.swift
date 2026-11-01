@@ -3,7 +3,7 @@ import AppKit
 
 public struct FavoritesListView: View {
     @ObservedObject public var favoritesManager: FavoritesManager = FavoritesManager.shared
-    @ObservedObject public var licenseManager: LicenseManager = LicenseManager.shared
+    @ObservedObject public var licenseManager: CreemLicenseManager = CreemLicenseManager.shared
     @State private var searchText: String = ""
     @State private var showClearConfirmation: Bool = false
     @State private var copiedItemId: UUID? = nil
@@ -93,27 +93,7 @@ public struct FavoritesListView: View {
             Spacer()
 
             // Pro Badge / Upgrade Button
-            Button(action: {
-                LicenseWindowController.shared.show()
-            }) {
-                HStack(spacing: 4) {
-                    Image(systemName: licenseManager.isPro ? "crown.fill" : "sparkles")
-                        .font(.system(size: 10))
-                    Text(licenseManager.isPro ? "PRO" : "Upgrade to Pro ($6.99)")
-                        .font(.system(size: 10, weight: .bold))
-                }
-                .foregroundColor(licenseManager.isPro ? .yellow : .white)
-                .padding(.horizontal, 7)
-                .padding(.vertical, 3)
-                .background(
-                    licenseManager.isPro
-                        ? Color.yellow.opacity(0.18)
-                        : Color.purple.opacity(0.85)
-                )
-                .clipShape(Capsule())
-            }
-            .buttonStyle(.plain)
-            .help(licenseManager.isPro ? "SwaprTrans Pro Activated" : "Upgrade to Pro for full features")
+            CreemUpgradePill()
 
             Text("\(favoritesManager.items.count) items")
                 .font(.system(size: 11))
@@ -303,7 +283,7 @@ public struct FavoritesListView: View {
                 .disabled(favoritesManager.items.isEmpty)
             } else {
                 Button(action: {
-                    LicenseWindowController.shared.show()
+                    CreemActivationWindow.show()
                 }) {
                     HStack(spacing: 4) {
                         Image(systemName: "lock.fill")
@@ -314,7 +294,7 @@ public struct FavoritesListView: View {
                     .foregroundColor(.secondary)
                 }
                 .buttonStyle(.plain)
-                .help("Upgrade to SwaprTrans Pro to export data")
+                .help("Upgrade to Pro to export data")
             }
 
             Spacer()

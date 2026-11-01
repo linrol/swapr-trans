@@ -16,9 +16,15 @@ let package = Package(
             targets: ["SwaprTrans"]
         )
     ],
+    dependencies: [
+        .package(path: "../CreemLicenseKit")
+    ],
     targets: [
         .target(
             name: "SwaprTransKit",
+            dependencies: [
+                "CreemLicenseKit"
+            ],
             path: "Sources/SwaprTransKit",
             linkerSettings: [
                 .linkedFramework("CoreGraphics"),

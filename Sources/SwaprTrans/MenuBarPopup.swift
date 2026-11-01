@@ -6,7 +6,7 @@ struct StandaloneMenuBarPopup: View {
     @ObservedObject var config = SwaprTransConfig.shared
     @ObservedObject var updateManager = UpdateManager.shared
     @ObservedObject var favoritesManager = FavoritesManager.shared
-    @ObservedObject var licenseManager = LicenseManager.shared
+    @ObservedObject var licenseManager = CreemLicenseManager.shared
     @State private var isVersionCopied: Bool = false
 
     var body: some View {
@@ -23,46 +23,8 @@ struct StandaloneMenuBarPopup: View {
 
                 Spacer()
 
-                // Pro Badge / Upgrade Pill (Replaces Idle/Active indicator)
-                Button(action: {
-                    LicenseWindowController.shared.show()
-                }) {
-                    if licenseManager.isPro {
-                        HStack(spacing: 3) {
-                            Image(systemName: "crown.fill")
-                                .font(.system(size: 10))
-                                .foregroundColor(.yellow)
-                            Text("PRO")
-                                .font(.system(size: 10, weight: .heavy))
-                                .foregroundColor(.yellow)
-                        }
-                        .padding(.horizontal, 7)
-                        .padding(.vertical, 3)
-                        .background(Color.yellow.opacity(0.18))
-                        .clipShape(Capsule())
-                    } else {
-                        HStack(spacing: 4) {
-                            Image(systemName: "sparkles")
-                                .font(.system(size: 9, weight: .semibold))
-                            Text("Upgrade to Pro ($6.99)")
-                                .font(.system(size: 10, weight: .bold))
-                        }
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 3.5)
-                        .background(
-                            LinearGradient(
-                                colors: [Color.purple, Color.blue],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .clipShape(Capsule())
-                        .shadow(color: Color.purple.opacity(0.35), radius: 3, y: 1)
-                    }
-                }
-                .buttonStyle(.plain)
-                .help(licenseManager.isPro ? "SwaprTrans Pro Lifetime Activated" : "Upgrade to SwaprTrans Pro ($6.99)")
+                // Pro Badge / Upgrade Pill
+                CreemUpgradePill()
             }
 
             // Update Banner (shows when update available, downloading, or feedback after manual check)
@@ -109,7 +71,7 @@ struct StandaloneMenuBarPopup: View {
                     if licenseManager.isPro {
                         FavoritesWindowController.shared.show()
                     } else {
-                        LicenseWindowController.shared.show()
+                        CreemActivationWindow.show()
                     }
                 }) {
                     HStack(spacing: 8) {

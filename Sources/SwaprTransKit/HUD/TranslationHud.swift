@@ -591,7 +591,7 @@ public struct TranslationHudView: View {
                     if config.isFavoritesEnabled {
                         // Favorite / Bookmark Button (Pro Feature)
                         Button(action: {
-                            if LicenseManager.shared.isPro {
+                            if CreemLicenseManager.shared.isPro {
                                 favoritesManager.toggleFavorite(
                                     original: model.original,
                                     translated: model.translated,
@@ -599,7 +599,7 @@ public struct TranslationHudView: View {
                                     provider: model.provider
                                 )
                             } else {
-                                LicenseWindowController.shared.show()
+                                CreemActivationWindow.show()
                             }
                         }) {
                             Image(systemName: isFavorited ? "star.fill" : "star")
@@ -607,7 +607,7 @@ public struct TranslationHudView: View {
                                 .foregroundColor(isFavorited ? .yellow : .secondary)
                         }
                         .buttonStyle(.plain)
-                        .help(LicenseManager.shared.isPro ? (isFavorited ? "Remove from Favorites" : "Add to Favorites") : "Upgrade to Pro to save favorites")
+                        .help(CreemLicenseManager.shared.isPro ? (isFavorited ? "Remove from Favorites" : "Add to Favorites") : "Upgrade to Pro to save favorites")
                     }
 
                     // Pronounce TTS Button
