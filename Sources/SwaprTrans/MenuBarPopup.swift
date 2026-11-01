@@ -148,7 +148,7 @@ struct StandaloneMenuBarPopup: View {
             bottomActions
         }
         .padding(14)
-        .frame(width: 360)
+        .frame(width: 340)
         .onAppear {
             config.checkPermission()
         }
@@ -171,7 +171,7 @@ struct StandaloneMenuBarPopup: View {
                     .font(.system(size: 13))
 
                 if let info = updateManager.remoteInfo {
-                    Text("New update: v\(info.version)\(info.commit.isEmpty ? "" : " (\(info.commit))")")
+                    Text("New update: v\(info.version)")
                         .font(.system(size: 11, weight: .semibold))
                         .lineLimit(1)
                 } else if let err = updateManager.updateError {
