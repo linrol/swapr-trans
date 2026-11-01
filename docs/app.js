@@ -6,11 +6,12 @@
       pageTitle: "SwaprTrans · 选词空格即翻，回车原地覆写",
       brandBadge: "原地瞬译",
       navFeatures: "特性",
+      navPro: "⭐️ Pro 终身版",
       navFaq: "常见问题",
       navInstall: "安装",
       navSdk: "开发库",
       navCafe: "咖啡小铺",
-      ctaPro: "⭐️ Pro 终身版 ($6.99)",
+      ctaPro: "⭐️ 获取 Pro 终身版 ($6.99)",
       ctaDownload: "下载 DMG",
 
       // Hero
@@ -52,6 +53,32 @@
       feat6Desc:
         "基于 macOS 内置 libsqlite3 驱动，WAL 事务模式，零额外三方包依赖；透明度 40%~100% 自由调节，文字始终锐利。",
 
+      // Pricing
+      pricingTitle: "灵活选择，永久买断",
+      pricingSub: "基础端侧瞬译与原地覆写能力 100% 永久免费开源；Pro 终身版专为重度阅读、外语交流与生词知识沉淀设计。",
+      freeTitle: "Standard 免费版",
+      freeDesc: "适合日常轻量翻译、网页阅读与聊天输入原地覆写",
+      freePriceSub: "/ 永久免费开源",
+      freeF1: "Apple 官方原生端侧模型深度驱动",
+      freeF2: "选词空格瞬起浮窗，回车原子级原地覆写",
+      freeF3: "零网络依赖，纯本地断网可用，100% 隐私安全",
+      freeF4: "自定义丰富触发快捷键与手势预设",
+      freeF5: "核心 SwaprTransKit 作为 Swift Package 完全开源",
+      freeBtn: "免费下载 DMG",
+
+      proBadge: "⭐️ 终身尊享 · 一次买断",
+      proTitle: "Pro 终身尊享版",
+      proDesc: "为知识管理与外语进阶打造，沉淀属于你的双语生词库",
+      proPriceSub: "/ 一次买断 · 永久使用",
+      proF0: "<strong>包含免费版全部核心能力</strong>",
+      proF1: "<strong>生词收藏本</strong>：浮窗随手点星收藏地道词句",
+      proF2: "<strong>原生管理窗口</strong>：独立 SQLite 本地管理，双向毫秒级检索",
+      proF3: "<strong>完整数据导出</strong>：一键导出 CSV / JSON，无缝导入 Anki / 欧路",
+      proF4: "<strong>多机激活</strong>：单激活码支持多达 3 台个人 Mac 设备",
+      proF5: "<strong>终身权益</strong>：永久免费版本更新与后续专属 Pro 新特性",
+      proBtn: "⭐️ 立即升级 Pro 终身版 ($6.99)",
+      proNote: "由 Creem.io 提供安全结账 · 支持 Apple Pay & 信用卡 · 即刻自动发码",
+
       // FAQ
       faqTitle: "常见问题解答 (FAQ)",
       faqSub: "了解 SwaprTrans 的工作原理、隐私安全保障与核心用法",
@@ -84,6 +111,7 @@
       pageTitle: "SwaprTrans · Select & Space to Translate, Enter to In-Place Rewrite",
       brandBadge: "In-Place",
       navFeatures: "Features",
+      navPro: "⭐️ Pro Lifetime",
       navInstall: "Download",
       navSdk: "SPM SDK",
       navFaq: "FAQ",
@@ -129,6 +157,32 @@
       feat6Title: "🗄️ Native SQLite3 & Frost Density",
       feat6Desc:
         "Powered by macOS built-in libsqlite3 with WAL transactions; customize background opacity 40%–100% with always-crisp typography.",
+
+      // Pricing
+      pricingTitle: "Simple Pricing, Lifetime Ownership",
+      pricingSub: "Core on-device translation and in-place rewriting are 100% free and open-source forever. Pro lifetime edition is built for intensive reading, foreign communication, and vocabulary retention.",
+      freeTitle: "Standard Free",
+      freeDesc: "Perfect for lightweight day-to-day reading and in-place translation",
+      freePriceSub: "/ Forever Free & Open Source",
+      freeF1: "Powered by Apple Native Neural Engine",
+      freeF2: "Space to trigger HUD, Enter to atomically rewrite in-place",
+      freeF3: "Zero network reliance, works 100% offline with full privacy",
+      freeF4: "Extensive customizable shortcut and gesture triggers",
+      freeF5: "Modular SwaprTransKit fully open-sourced via SPM",
+      freeBtn: "Download DMG (Free)",
+
+      proBadge: "⭐️ Lifetime Deal · Buy Once",
+      proTitle: "Pro Lifetime Edition",
+      proDesc: "Unlock powerful vocabulary management and retention tools",
+      proPriceSub: "/ One-time purchase · Lifetime updates",
+      proF0: "<strong>Includes all Free Edition capabilities</strong>",
+      proF1: "<strong>Vocabulary Bookmark</strong>: Star expressions in HUD with one click",
+      proF2: "<strong>Native SQLite Window</strong>: Standalone manager with instant bidirectional search",
+      proF3: "<strong>Complete Data Export</strong>: One-click export to CSV / JSON for Anki",
+      proF4: "<strong>Multi-Mac Activation</strong>: Single license activates up to 3 personal Macs",
+      proF5: "<strong>Lifetime Value</strong>: Free lifetime updates & early access to upcoming Pro features",
+      proBtn: "⭐️ Get Pro Lifetime ($6.99)",
+      proNote: "Secured checkout powered by Creem.io · Apple Pay & Credit Card · Instant delivery",
 
       // FAQ
       faqTitle: "Frequently Asked Questions (FAQ)",
