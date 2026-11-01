@@ -112,7 +112,7 @@
       brandBadge: "In-Place",
       navFeatures: "Features",
       navPro: "Pro Lifetime",
-      navInstall: "Download",
+      navInstall: "Install",
       navSdk: "SPM SDK",
       navFaq: "FAQ",
       navCafe: "Cafe Lounge",
