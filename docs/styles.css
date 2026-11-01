@@ -84,15 +84,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 6px 14px 6px 10px;
+  gap: 18px;
+  padding: 5px 10px 5px 12px;
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--border-strong);
   border-radius: 9999px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.05);
-  max-width: 860px;
+  max-width: 820px;
   width: 100%;
 }
 
@@ -160,10 +160,21 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  background: rgba(124, 58, 237, 0.08);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  transition: all 150ms var(--ease);
 }
 
 .nav-links .nav-link-pro:hover {
+  background: rgba(124, 58, 237, 0.16);
   color: #6d28d9;
+}
+
+.nav-links .nav-link-pro .pro-tag {
+  font-size: 0.72rem;
+  line-height: 1;
 }
 
 .nav-actions {
@@ -266,6 +277,7 @@ body {
   border: 1px solid var(--border);
   color: var(--text-muted);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
 }
 
 .btn-icon:hover {
