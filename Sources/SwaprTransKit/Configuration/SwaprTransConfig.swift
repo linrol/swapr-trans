@@ -81,13 +81,13 @@ public final class SwaprTransConfig: ObservableObject {
         didSet {
             guard isInitialized else { return }
             defaults.set(isProFeatureEnabled, forKey: keyProFeatureEnabled)
+            CreemLicenseManager.shared.isProFeatureEnabled = isProFeatureEnabled
         }
     }
 
-    /// 当前是否享有 Pro 权益：如果未开启商业化体系，则默认全员享有 Pro；若开启，则校验激活状态。
+    /// 当前是否享有 Pro 权益（直接委托给 CreemLicenseManager 统一熔断控制）
     public var isProActive: Bool {
-        guard isProFeatureEnabled else { return true }
-        return CreemLicenseManager.shared.isPro
+        CreemLicenseManager.shared.isPro
     }
 
     @Published public var hasAccessibilityPermission: Bool = false
@@ -143,6 +143,7 @@ public final class SwaprTransConfig: ObservableObject {
         } else {
             self.isProFeatureEnabled = false
         }
+        CreemLicenseManager.shared.isProFeatureEnabled = self.isProFeatureEnabled
 
         checkPermission()
         self.isInitialized = true

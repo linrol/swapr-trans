@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "creemlicensekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/linrol/CreemLicenseKit.git",
+      "state" : {
+        "revision" : "7ea937388704766bdb33f1da2d91f73b159ab879",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}

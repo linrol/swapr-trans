@@ -17,7 +17,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/linrol/CreemLicenseKit.git", from: "1.0.0")
+        .package(url: "https://github.com/linrol/CreemLicenseKit.git", from: "1.0.1")
     ],
     targets: [
         .target(
