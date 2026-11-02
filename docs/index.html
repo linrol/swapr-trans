@@ -49,7 +49,7 @@
     <meta name="theme-color" content="#f8fafc" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="apple-touch-icon" href="assets/app-icon.png" />
-    <link rel="stylesheet" href="styles.css?v=2.0" />
+    <link rel="stylesheet" href="styles.css?v=3.0" />
 
     <!-- Schema.org JSON-LD (SoftwareApplication + FAQPage) -->
     <script type="application/ld+json">
@@ -656,19 +656,71 @@
       </section>
     </main>
 
-    <!-- Minimalist Single-Line Footer -->
+    <!-- Scheme 1: Modern Modular Matrix Footer (Raycast / Linear Style) -->
     <footer class="site-footer">
-      <div class="container footer-inner" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: nowrap; gap: 20px;">
-        <div class="footer-brand" style="white-space: nowrap; display: inline-flex; align-items: center; gap: 8px;">
-          <span>SwaprTrans · 极简原生瞬译与原地覆写</span>
-          <span class="footer-dot">•</span>
-          <span>Operated by <strong>Luo Lin (Linrol Lab)</strong></span>
+      <div class="container footer-container">
+        <!-- Top Matrix: Brand Left + Navigation Columns Right -->
+        <div class="footer-grid">
+          <!-- Brand & Status Column -->
+          <div class="footer-col-brand">
+            <div class="footer-logo-row">
+              <img src="assets/app-icon.png" alt="SwaprTrans" class="footer-app-icon" />
+              <span class="footer-brand-title">SwaprTrans</span>
+              <span class="footer-version-tag">v1.0.2</span>
+            </div>
+            <p class="footer-tagline" data-i18n="footerText">专为 macOS 打造的极简原生选词瞬译与原地覆写工具</p>
+            <div class="footer-status-pill">
+              <span class="status-indicator-dot"></span>
+              <span class="status-indicator-text">Apple 神经引擎端侧推理 · 100% 离线隐私</span>
+            </div>
+          </div>
+
+          <!-- Navigation Columns -->
+          <div class="footer-nav-groups">
+            <!-- Col 1: Product -->
+            <div class="footer-nav-col">
+              <h4 class="footer-col-heading">产品</h4>
+              <ul class="footer-nav-list">
+                <li><a href="#features" data-i18n="navFeatures">核心特性</a></li>
+                <li><a href="#install" data-i18n="navInstall">安装指南</a></li>
+                <li><a href="#pricing" data-i18n="pricingTitle">版本定价</a></li>
+                <li><a href="https://github.com/linrol/swapr-trans/releases" target="_blank" rel="noopener noreferrer">更新发布 (Releases)</a></li>
+                <li><a href="https://github.com/linrol/swapr-trans" target="_blank" rel="noopener noreferrer">GitHub 开源仓库 ↗</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 2: Legal & Trust -->
+            <div class="footer-nav-col">
+              <h4 class="footer-col-heading">安全与法务</h4>
+              <ul class="footer-nav-list">
+                <li><a href="privacy.html" data-i18n="footerPrivacy">隐私政策 (Privacy)</a></li>
+                <li><a href="terms.html" data-i18n="footerTerms">服务条款 (Terms)</a></li>
+                <li><a href="terms.html#aup">可接受使用政策 (AUP)</a></li>
+                <li><a href="terms.html#refund">14 天无理由退款</a></li>
+              </ul>
+            </div>
+
+            <!-- Col 3: Studio & About -->
+            <div class="footer-nav-col">
+              <h4 class="footer-col-heading">关于与支持</h4>
+              <ul class="footer-nav-list">
+                <li><a href="mailto:linrolmail@gmail.com">客服邮箱联系 ↗</a></li>
+                <li><a href="/" target="_blank" rel="noopener noreferrer">☕ 赛博咖啡馆主站</a></li>
+                <li><a href="/katib/" target="_blank" rel="noopener noreferrer">Katib 实时会议字幕 ↗</a></li>
+                <li><span class="footer-author-text">由 Luo Lin 独立手作</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="footer-links" style="white-space: nowrap; display: inline-flex; align-items: center; gap: 16px;">
-          <a href="mailto:linrolmail@gmail.com">linrolmail@gmail.com</a>
-          <a href="privacy.html" data-i18n="footerPrivacy">Privacy Policy</a>
-          <a href="terms.html" data-i18n="footerTerms">Terms of Service</a>
-          <a href="https://github.com/linrol/swapr-trans" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+        <!-- Sub-footer Bottom Bar -->
+        <div class="footer-bottom-bar">
+          <div class="footer-bottom-left">
+            <span>© 2026 Luo Lin (Linrol Lab). All rights reserved.</span>
+          </div>
+          <div class="footer-bottom-right">
+            <span>Merchant of Record & Payments secured by Creem.io</span>
+          </div>
         </div>
       </div>
     </footer>
@@ -678,7 +730,7 @@
       <span>☕</span> <span data-i18n="portalText">来吧台喝杯咖啡</span> <span>↗</span>
     </a>
 
-    <script src="app.js?v=2.0"></script>
+    <script src="app.js?v=3.0"></script>
     <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "860d07b4a6254a209fe47aec28f9cf0a"}'></script><!-- End Cloudflare Web Analytics -->
   </body>
 </html>
