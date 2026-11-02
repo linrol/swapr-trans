@@ -627,5 +627,14 @@
     });
   });
 
+  // Dynamic host adaptation: ensure canonical & share links match current domain
+  try {
+    const currentHref = window.location.href;
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = currentHref;
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.content = currentHref;
+  } catch (_) {}
+
   applyLanguage(currentLang);
 })();
