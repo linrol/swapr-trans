@@ -879,34 +879,77 @@ body {
   overflow-x: auto;
 }
 
-/* Minimalist Light Footer */
+/* Professional Light Footer */
 .site-footer {
   border-top: 1px solid #e2e8f0;
-  padding: 28px 0;
-  font-size: 0.82rem;
-  color: var(--text-dim);
+  padding: 36px 0 30px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
   background: #ffffff;
 }
 
 .footer-inner {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-top {
+  display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-brand-desc {
+  color: #475569;
+  font-weight: 500;
+}
+
+.footer-contact a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
 }
 
 .footer-links {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .footer-links a {
   color: var(--text-dim);
   text-decoration: none;
+  font-weight: 500;
+  transition: color 150ms var(--ease);
 }
 
 .footer-links a:hover {
-  color: var(--text);
+  color: #0f172a;
+}
+
+.footer-legal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  flex-wrap: wrap;
+}
+
+.footer-mor-note {
+  color: #94a3b8;
 }
 
 /* FAQ Section */

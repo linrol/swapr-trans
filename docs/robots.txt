@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://linrol.github.io/swapr-trans/sitemap.xml
+Sitemap: https://trans.linrol.eu.org/sitemap.xml

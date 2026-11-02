@@ -103,7 +103,9 @@
 
       // Footer & Portal
       footerText: "SwaprTrans · 专为 macOS 打造的极简原生选词瞬译与原地覆写工具",
-      footerCafe: "Linrol 的赛博咖啡馆",
+      footerPrivacy: "隐私政策",
+      footerTerms: "服务条款",
+      footerCafe: "赛博咖啡馆",
       portalText: "来吧台喝杯咖啡",
     },
 
@@ -208,7 +210,9 @@
 
       // Footer & Portal
       footerText: "SwaprTrans · The lightweight native in-place translation tool for macOS",
-      footerCafe: "Linrol's Cyber Cafe",
+      footerPrivacy: "Privacy Policy",
+      footerTerms: "Terms of Service",
+      footerCafe: "Cyber Cafe",
       portalText: "Visit Cafe Lounge",
     },
   };
