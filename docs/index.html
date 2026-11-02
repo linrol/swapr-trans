@@ -49,7 +49,7 @@
     <meta name="theme-color" content="#f8fafc" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="apple-touch-icon" href="assets/app-icon.png" />
-    <link rel="stylesheet" href="styles.css?v=4.0" />
+    <link rel="stylesheet" href="styles.css?v=5.0" />
 
     <!-- Schema.org JSON-LD (SoftwareApplication + FAQPage) -->
     <script type="application/ld+json">
@@ -656,44 +656,42 @@
       </section>
     </main>
 
-    <!-- Scheme 3: Refined Two-Tier Minimalist Footer -->
+    <!-- Centered Cohesive Footer (Bob / Typora / Shottr Style) -->
     <footer class="site-footer">
-      <div class="container footer-container">
-        <!-- Tier 1: Brand & Key Navigation -->
-        <div class="footer-tier-primary">
-          <div class="footer-brand-lockup">
-            <img src="assets/app-icon.png" alt="SwaprTrans" class="footer-app-icon" />
-            <span class="footer-brand-title">SwaprTrans</span>
-            <span class="footer-brand-desc" data-i18n="footerText">· 极简原生瞬译与原地覆写</span>
-          </div>
-          <div class="footer-nav-links">
-            <a href="privacy.html" data-i18n="footerPrivacy">隐私政策</a>
-            <a href="terms.html" data-i18n="footerTerms">服务条款</a>
-            <a href="https://github.com/linrol/swapr-trans" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://github.com/linrol/swapr-trans/releases" target="_blank" rel="noopener noreferrer">Releases</a>
-          </div>
+      <div class="container footer-content">
+        <!-- Top: Logo + Brand + Description -->
+        <div class="footer-brand-center">
+          <img src="assets/app-icon.png" alt="SwaprTrans" class="footer-app-icon" />
+          <span class="footer-brand-title">SwaprTrans</span>
+          <span class="footer-brand-sep">·</span>
+          <span class="footer-brand-desc" data-i18n="footerText">macOS 极简原生瞬译与原地覆写工具</span>
         </div>
 
-        <!-- Tier 2: Operator Identity & Creem MoR Attribution -->
-        <div class="footer-tier-secondary">
-          <div class="footer-secondary-left">
-            <span>© 2026 由 <strong>Luo Lin (Linrol Lab)</strong> 独立手作</span>
-            <span>•</span>
-            <span>客服支持: <a href="mailto:linrolmail@gmail.com">linrolmail@gmail.com</a></span>
-          </div>
-          <div class="footer-secondary-right">
-            <span>Merchant of Record by Creem.io</span>
-          </div>
+        <!-- Middle: Clean Nav Cluster -->
+        <div class="footer-nav-cluster">
+          <a href="privacy.html" data-i18n="footerPrivacy">隐私政策</a>
+          <span class="dot">•</span>
+          <a href="terms.html" data-i18n="footerTerms">服务条款</a>
+          <span class="dot">•</span>
+          <a href="https://github.com/linrol/swapr-trans" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <span class="dot">•</span>
+          <a href="https://github.com/linrol/swapr-trans/releases" target="_blank" rel="noopener noreferrer">Releases</a>
+          <span class="dot">•</span>
+          <a href="/" target="_blank" rel="noopener noreferrer">☕ 赛博咖啡馆</a>
+          <span class="dot">•</span>
+          <a href="mailto:linrolmail@gmail.com">客服邮箱</a>
+        </div>
+
+        <!-- Bottom: Legal Attribution & Creem MoR -->
+        <div class="footer-legal-center">
+          <span>© 2026 由 <strong>Luo Lin (Linrol Lab)</strong> 独立手作</span>
+          <span class="sep">|</span>
+          <span>Merchant of Record by Creem.io</span>
         </div>
       </div>
     </footer>
 
-    <!-- 右下角常驻：穿透到开发者赛博咖啡馆 -->
-    <a href="/" target="_blank" class="cyber-cafe-portal" title="穿透到开发者主页 · 赛博手冲咖啡馆">
-      <span>☕</span> <span data-i18n="portalText">来吧台喝杯咖啡</span> <span>↗</span>
-    </a>
-
-    <script src="app.js?v=4.0"></script>
+    <script src="app.js?v=5.0"></script>
     <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "860d07b4a6254a209fe47aec28f9cf0a"}'></script><!-- End Cloudflare Web Analytics -->
   </body>
 </html>

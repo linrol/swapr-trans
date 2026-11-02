@@ -880,65 +880,65 @@ body {
 }
 
 /* ==========================================================================
-   Scheme 3: Zed / TablePlus Style Refined Two-Tier Minimalist Footer
+   Centered Cohesive Footer (Bob / Typora / Shottr Style)
    ========================================================================== */
 .site-footer {
   border-top: 1px solid #e2e8f0;
-  padding: 32px 0 28px;
-  background: #ffffff;
+  padding: 48px 0 40px;
+  background: transparent;
   color: #64748b;
-  font-size: 0.84rem;
+  font-size: 0.85rem;
 }
 
-.footer-container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 24px;
+.footer-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 16px;
 }
 
-/* Tier 1: Primary Brand & Action Links */
-.footer-tier-primary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.footer-brand-lockup {
-  display: flex;
+/* Brand Row */
+.footer-brand-center {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
 }
 
 .footer-app-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .footer-brand-title {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #0f172a;
   letter-spacing: -0.01em;
 }
 
-.footer-brand-desc {
-  font-size: 0.84rem;
-  color: #64748b;
+.footer-brand-sep {
+  color: #cbd5e1;
 }
 
-.footer-nav-links {
+.footer-brand-desc {
+  font-size: 0.86rem;
+  color: #475569;
+}
+
+/* Nav Links Cluster */
+.footer-nav-cluster {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 4px 0;
 }
 
-.footer-nav-links a {
+.footer-nav-cluster a {
   color: #475569;
   text-decoration: none;
   font-size: 0.84rem;
@@ -946,58 +946,33 @@ body {
   transition: color 150ms var(--ease, ease);
 }
 
-.footer-nav-links a:hover {
+.footer-nav-cluster a:hover {
   color: #0f172a;
-}
-
-/* Tier 2: Secondary Legal & Operator Attribution */
-.footer-tier-secondary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  font-size: 0.78rem;
-  color: #94a3b8;
-  padding-top: 14px;
-  border-top: 1px solid #f1f5f9;
-}
-
-.footer-secondary-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.footer-secondary-left strong {
-  color: #475569;
-  font-weight: 600;
-}
-
-.footer-secondary-left a {
-  color: #2563eb;
-  text-decoration: none;
-}
-
-.footer-secondary-left a:hover {
   text-decoration: underline;
 }
 
-.footer-secondary-right {
-  color: #94a3b8;
+.footer-nav-cluster .dot {
+  color: #cbd5e1;
+  font-size: 0.75rem;
 }
 
-@media (max-width: 820px) {
-  .footer-tier-primary {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-  }
-  .footer-tier-secondary {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
+/* Bottom Legal Row */
+.footer-legal-center {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.footer-legal-center strong {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.footer-legal-center .sep {
+  color: #e2e8f0;
 }
 
 .footer-mor-note {

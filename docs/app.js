@@ -102,7 +102,7 @@
       btnDownloadBox: "下载 SwaprTrans-1.0.2.dmg (1.9MB)",
 
       // Footer & Portal
-      footerText: "· 极简原生瞬译与原地覆写",
+      footerText: "macOS 极简原生瞬译与原地覆写工具",
       footerPrivacy: "隐私政策",
       footerTerms: "服务条款",
       footerCafe: "赛博咖啡馆",
@@ -209,7 +209,7 @@
       btnDownloadBox: "Download SwaprTrans-1.0.2.dmg (1.9MB)",
 
       // Footer & Portal
-      footerText: "· Native In-Place Translation & Rewriting",
+      footerText: "Native macOS in-place translation and rewriting",
       footerPrivacy: "Privacy Policy",
       footerTerms: "Terms of Service",
       footerCafe: "Cyber Cafe",
