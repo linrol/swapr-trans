@@ -105,8 +105,11 @@
       footerText: "macOS 极简原生瞬译与原地覆写工具",
       footerPrivacy: "隐私政策",
       footerTerms: "服务条款",
-      footerCafe: "赛博咖啡馆",
-      portalText: "来吧台喝杯咖啡",
+      footerLab: "✦ Linrol Lab",
+      footerCrafted: "© 2026 由 <strong>Luo Lin (Linrol Lab)</strong> 独立手作",
+      footerSupport: "客服: <a href=\"mailto:linrolmail@gmail.com\">linrolmail@gmail.com</a>",
+      footerCafe: "Linrol Lab",
+      portalText: "访问 Linrol Lab",
     },
 
     en: {
@@ -212,8 +215,11 @@
       footerText: "Native macOS in-place translation and rewriting",
       footerPrivacy: "Privacy Policy",
       footerTerms: "Terms of Service",
-      footerCafe: "Cyber Cafe",
-      portalText: "Visit Cafe Lounge",
+      footerLab: "✦ Linrol Lab",
+      footerCrafted: "© 2026 Crafted independently by <strong>Luo Lin (Linrol Lab)</strong>",
+      footerSupport: "Support: <a href=\"mailto:linrolmail@gmail.com\">linrolmail@gmail.com</a>",
+      footerCafe: "Linrol Lab",
+      portalText: "Visit Linrol Lab",
     },
   };
 
