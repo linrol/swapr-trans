@@ -893,7 +893,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  flex-wrap: wrap;
+  padding-right: 180px; /* 预留右下角悬浮咖啡胶囊空间 */
 }
 
 .footer-brand {
@@ -901,6 +901,7 @@ body {
   align-items: center;
   gap: 8px;
   color: #475569;
+  white-space: nowrap;
 }
 
 .footer-dot {
@@ -916,7 +917,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  flex-wrap: wrap;
+  white-space: nowrap;
 }
 
 .footer-links a {
@@ -930,8 +931,9 @@ body {
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .footer-inner {
+    padding-right: 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
