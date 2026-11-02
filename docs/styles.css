@@ -880,14 +880,14 @@ body {
 }
 
 /* ==========================================================================
-   Centered Cohesive Footer (Bob / Typora / Shottr Style)
+   Compact Centered Footer (Ultra-Clean 2-Line)
    ========================================================================== */
 .site-footer {
   border-top: 1px solid #e2e8f0;
-  padding: 48px 0 40px;
+  padding: 22px 0 20px;
   background: transparent;
   color: #64748b;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 .footer-content {
@@ -895,84 +895,73 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 16px;
+  gap: 8px;
 }
 
-/* Brand Row */
-.footer-brand-center {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-app-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-}
-
-.footer-brand-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0f172a;
-  letter-spacing: -0.01em;
-}
-
-.footer-brand-sep {
-  color: #cbd5e1;
-}
-
-.footer-brand-desc {
-  font-size: 0.86rem;
-  color: #475569;
-}
-
-/* Nav Links Cluster */
-.footer-nav-cluster {
+/* Line 1: Brand & Key Links */
+.footer-line-primary {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
-  padding: 4px 0;
 }
 
-.footer-nav-cluster a {
+.footer-mini-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.footer-brand-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.footer-line-primary a {
   color: #475569;
   text-decoration: none;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 500;
   transition: color 150ms var(--ease, ease);
 }
 
-.footer-nav-cluster a:hover {
+.footer-line-primary a:hover {
   color: #0f172a;
   text-decoration: underline;
 }
 
-.footer-nav-cluster .dot {
+.footer-dot {
   color: #cbd5e1;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
 }
 
-/* Bottom Legal Row */
-.footer-legal-center {
-  display: inline-flex;
+/* Line 2: Subtle Legal & Attribution */
+.footer-line-secondary {
+  display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 0.78rem;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.76rem;
   color: #94a3b8;
-  margin-top: 4px;
+  flex-wrap: wrap;
 }
 
-.footer-legal-center strong {
+.footer-line-secondary strong {
   color: #64748b;
   font-weight: 600;
 }
 
-.footer-legal-center .sep {
-  color: #e2e8f0;
+.footer-line-secondary a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.footer-line-secondary a:hover {
+  color: #2563eb;
+  text-decoration: underline;
 }
 
 .footer-mor-note {
